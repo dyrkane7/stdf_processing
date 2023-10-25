@@ -1,0 +1,17 @@
+Galaxy has a tool to merge STDF files but it has drawbacks:
+	-Need to upload both files to Galaxy server and download merged file
+	-No audit trail record to mark the file as a merged file
+	-PRR PID field not updated to be consistent between files. i.e. PRR for given (X,Y) can have different PID in different files.
+	-Retest count is set to zero
+	-discrepency between part count in WRR and PCR
+	-discards many TSR fields including TEST_MIN, TEST_MAX, TST_SUMS, TST_SQRS, TEST_TIME and more 
+
+merge_stdf_v2 should not be used, has bug where it discards limits/units information for some tests
+merge_stdf_v4 is working without known issues
+
+Steps to merge stdf file:
+1) Add audit trail record to mark the file as a merged file
+2) update part count, good count, retest count in WRR, PCR
+3) update PID and part flag supercede bit in PRR
+4) update HBR and SBR bin counts, merged file must include HBR/SBR from both source files
+5) update TSR - EXEC_CNT, FAIL_CNT, ALRM_CNT, TEST_MIN, TEST_MAX, TST_SUMS, TST_SQRS, TEST_TIME

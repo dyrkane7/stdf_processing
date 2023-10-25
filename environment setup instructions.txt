@@ -1,0 +1,6 @@
+-Create new conda virtual enironment <env_new>
+-open conda prompt in <env_new>
+-run command 'pip install spyder-kernels==2.4.3'
+-open spyder and switch to <env_new>
+-run command in spyder console 'pip install Semi-ATE-STDF'
+-import module with line 'from Semi_ATE import STDF'
